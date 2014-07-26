@@ -1,0 +1,26 @@
+{# Implement base html template #}
+{% extends 'base.html' %}
+
+{# Load up the files that you'll be needing #}
+{% load bootstrap3 %}
+
+{# Overwrite tab title #}
+{% block head_title %}Blix | Create Post{% endblock %}
+
+{% block content %}
+    <h2>Create Post</h2>
+
+    {# Start the form #}
+    <form action="/blog/create_post/" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% if throw_duplicity_error %}
+            {% bootstrap_alert alert_type="danger" content="A post of that title already exists." %}
+        {% endif %}
+        {% buttons %}
+            <button type="submit" class="btn btn-default">
+                Create Post
+            </button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

@@ -1,0 +1,72 @@
+{# Implement base html template #}
+{% extends 'base.html' %}
+
+{# Create Tab title #}
+{% block head_title %}Blix | Home{% endblock %}
+
+{# Content container code #}
+{% block content %}
+
+    {# List the Blog categories #}
+    <h2>Categories</h2>
+    {% if categories %}
+
+        {# Category table (list) #}
+        <table class="table table-hover">
+
+            {# The heading labels for the table. #}
+            <thead>
+                <th>Title</th>
+            </thead>
+
+            {# The table contents. #}
+            <tbody>
+
+                {# For every category, fill in a row of the table #}
+                {% for category in categories %}
+
+                    {# Make the entire table row clickable #}
+                    <tr class="row-link" href="{{ category.get_absolute_url }}">
+                        <td>{{ category.title }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are no categories.</p>
+    {% endif %}
+
+    {# List the Blog posts #}
+    <h2>Posts</h2>
+    {% if posts %}
+
+        {# Post table (list) #}
+        <table class="table table-hover">
+
+            {# The heading labels for the table. #}
+            <thead>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date Created</th>
+            </thead>
+
+            {# The table contents. #}
+            <tbody>
+
+                {# Fore every post, fill in a row of the table #}
+                {% for post in posts %}
+
+                    {# Make the entire table row clickable #}
+                    <tr class="row-link" href="{{ post.get_absolute_url }}">
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.category.title }}</td>
+                        <td>{{ post.posted }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
+
+{% endblock %}

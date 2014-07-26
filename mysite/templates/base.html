@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+{# Head information #}
+<head>
+    {# Load up the files that you'll be needing #}
+    {% load staticfiles %}
+    {% load bootstrap3 %}
+
+    {# Initialize the bootstrap css. #}
+    {% bootstrap_css %}
+
+    {# Title #}
+    <title>
+        {% block head_title %}Blix{% endblock %}
+    </title>
+</head>
+
+{# Main body #}
+<body>
+    {# Main body container #}
+    <div id="body-container">
+
+        {# Start navbar (Which is the main menu at the top of the page) #}
+        <nav class="navbar navbar-inverse" role="navigation">
+
+            <!-- Header block -->
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Blix</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/blog/create_category/">Create Category</a></li>
+                    <li><a href="/blog/create_post/">Create Post</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        {# Main content container #}
+        <div class="container">
+            {% block sidebar %}
+                <!-- Sidebar block -->
+            {% endblock %}
+            {% block content %}
+                <!-- Content block -->
+            {% endblock %}
+        </div>
+    </div>
+
+    {# Import the bootstrap javascript and the jQuery. #}
+    <script src="{% bootstrap_jquery_url %}"></script>
+    <script src="{% bootstrap_javascript_url %}"></script>
+
+    {# Implemenmt jQuery function to allow entire rows to be a link. #}
+    <script>
+        jQuery(document).ready(function($) {
+            $(".row-link").click(function() {
+                window.document.location = $(this).attr("href")
+            })
+        })
+    </script>
+</body>
+</html>
