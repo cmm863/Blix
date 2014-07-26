@@ -9,7 +9,7 @@ from django.template.defaultfilters import slugify
 
 def index(request):
     return render_to_response('index.html', {
-        'categories': Category.objects.all(),
+        'categories': Category.objects.all().order_by('title'),
         'posts': Blog.objects.all().order_by('posted').reverse()
     })
 

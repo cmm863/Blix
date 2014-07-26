@@ -1,6 +1,8 @@
+{# Implement base html template #}
 {% extends 'base.html' %}
+
+{# Overwrite title #}
 {% block head_title %}Blix | {{ category.title }} Posts{% endblock %}
-{% block title %}{{ category.title }}{% endblock %}
 
 {% block content %}
     {% if posts %}

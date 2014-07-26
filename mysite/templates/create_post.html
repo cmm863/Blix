@@ -14,6 +14,8 @@
     <form action="/blog/create_post/" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
+
+        {# If there is already a db entry with that title #}
         {% if throw_duplicity_error %}
             {% bootstrap_alert alert_type="danger" content="A post of that title already exists." %}
         {% endif %}
