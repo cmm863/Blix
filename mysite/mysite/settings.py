@@ -27,7 +27,8 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 TEMPLATE_DIRS = (
-    '/home/connor/Work/MyWebsites/MyTwit/mysite/templates'
+    '/home/connor/Work/MyWebsites/MyTwit/mysite/templates',
+    '/home/ubuntu/Blix/mysite/templates'
 )
 
 # Application definition
