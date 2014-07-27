@@ -53,7 +53,7 @@
             {# The table contents. #}
             <tbody>
 
-                {# Fore every post, fill in a row of the table #}
+                {# For every post, fill in a row of the table #}
                 {% for post in posts %}
 
                     {# Make the entire table row clickable #}
@@ -67,6 +67,38 @@
         </table>
     {% else %}
         <p>There are no posts.</p>
+    {% endif %}
+
+    {# List the Users (For now) #}
+    <h2>Users</h2>
+    {% if users %}
+        {# Post User (list) #}
+        <table class="table table-hover">
+
+            {# The heading labels for the table. #}
+            <thead>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </thead>
+
+            {# The table contents. #}
+            <tbody>
+
+                {# For every user, fill in a row on the table #}
+                {% for user in users %}
+
+                    {# Make the entire row clickable #}
+                    <tr class="row-link" href="{{ user.get_absolute_url }}">
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are no users.</p>
     {% endif %}
 
 {% endblock %}

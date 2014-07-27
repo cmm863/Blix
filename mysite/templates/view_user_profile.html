@@ -1,0 +1,7 @@
+{# Implement the base html template #}
+{% extends 'base.html' %}
+
+{% block head_title %}Blix | {{ user.username }} Profile {% endblock %}
+{% block content %}
+    {{ user.last_name }}, {{ user.first_name }}
+{% endblock %}

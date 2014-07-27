@@ -4,13 +4,15 @@ from blog.models import Blog, Category
 from blog.forms import BlogForm, CategoryForm
 from django.core.context_processors import csrf
 from django.template.defaultfilters import slugify
+from profiles.models import BlixUser
 
 # Create your views here.
 
 def index(request):
     return render_to_response('index.html', {
         'categories': Category.objects.all().order_by('title'),
-        'posts': Blog.objects.all().order_by('posted').reverse()
+        'posts': Blog.objects.all().order_by('posted').reverse(),
+        'users': BlixUser.objects.all().order_by('date_joined')
     })
 
 
