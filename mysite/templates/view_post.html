@@ -3,5 +3,5 @@
 
 {% block head_title %}Blix | {{ post.title }}{% endblock %}
 {% block content %}
-    {{ post.body }}
+    {{ post.body|linebreaksbr }}
 {% endblock %}
